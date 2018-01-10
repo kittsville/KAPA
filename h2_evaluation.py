@@ -3,9 +3,6 @@ import kapa
 import sys
 import csv
 
-#digit_names = ['0', '1', '2', '3', '4', '6', 'period', '9']
-digit_names = ['left', 'right']
-
 def print_shape(shape):
     x = -1
     for i in range(12):
@@ -23,9 +20,8 @@ results = []
 for i in range(1, 11):
     for _ in range(30):
         result = kapa.kapa(
-            antigens             = [helpers.create_antibody() for _ in range(i)],
-            antibodies           = [helpers.create_antibody() for _ in range(10)],
-            antibody_generator   = helpers.create_antibody,
+            antigens             = [kapa.Antibody() for _ in range(i)],
+            antibodies           = [kapa.Antibody() for _ in range(10)],
             generations          = 100,
             num_clone_antibodies = 5,
             num_kill_antibodies  = 0,
@@ -41,8 +37,6 @@ with open('output.csv', 'wb') as output_csv:
     dict_writer.writeheader()
     dict_writer.writerows(results)
 sys.exit()
-#for affinity_rating in affinity_graph:
-#    affinity_rating['key'] = digit_names[affinity_rating['key']]
 
 with open('output.csv', 'wb') as output_csv:
     dict_writer = csv.DictWriter(output_csv, ['generation', 'key', 'affinity'])

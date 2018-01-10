@@ -23,8 +23,7 @@ affinity_graph = []
 for i in range(30):
     affinity_graph += kapa.kapa(
         antigens             = [helpers.create_antigen(name) for name in digit_names],
-        antibodies           = [helpers.create_antibody() for _ in range(10)],
-        antibody_generator   = helpers.create_antibody,
+        antibodies           = [kapa.Antibody() for _ in range(10)],
         generations          = 60,
         num_clone_antibodies = 5,
         num_kill_antibodies  = 0,
