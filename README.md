@@ -28,7 +28,7 @@ H1:
 H2:
 > The number of generations taken for convergence remains constant as antigen numbers increase, given Ag <= Ab. This can be measured using a linear model with the number of antigens as the independent variable and the number of generations taken for convergence as the dependant variable. KAPA was run 30 times each on an increasing number of randomly generated antigens Ag = 1..10.
 
-KAPA is written as a library, so you could instead import `kapa` and then run `kapa.kapa()`, specifying the antibodies, antigens and your preferred parameters for the algorithm.
+KAPA is written as a library, so you could instead `import kapa` and then run `kapa.kapa()`, specifying the antibodies, antigens and your preferred parameters for the algorithm.
 
 ## License
 [MIT License](https://opensource.org/licenses/MIT)
