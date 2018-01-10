@@ -1,10 +1,7 @@
-from matplotlib import pylab
-import random
+import helpers
 import kapa
 import sys
 import csv
-
-seed = range(120)
 
 #digit_names = ['0', '1', '2', '3', '4', '6', 'period', '9']
 digit_names = ['left', 'right']
@@ -21,26 +18,14 @@ def print_shape(shape):
                 row += ' '
         print row
 
-def create_antigen(name):
-    image_matrix = pylab.imread('digits/' + name + '.png')
-    shape = []
-    
-    for row in image_matrix:
-        shape += [all(pixel) == 0 for pixel in row] # Converts colour to boolean (black = True)
-    
-    return kapa.Antigen(shape)
-
-def create_antibody():
-    return kapa.Antibody([random.random() >= .5 for s in seed])
-
 results = []
 
 for i in range(1, 11):
     for _ in range(30):
         result = kapa.kapa(
-            antigens             = [create_antibody() for _ in range(i)],
-            antibodies           = [create_antibody() for _ in range(10)],
-            antibody_generator   = create_antibody,
+            antigens             = [helpers.create_antibody() for _ in range(i)],
+            antibodies           = [helpers.create_antibody() for _ in range(10)],
+            antibody_generator   = helpers.create_antibody,
             generations          = 100,
             num_clone_antibodies = 5,
             num_kill_antibodies  = 0,
